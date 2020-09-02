@@ -1,0 +1,227 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+$font-path: '/media/fonts';
+$image-path: '/media/protocol/img';
+
+@import '../../protocol/css/includes/lib';
+@import '../../protocol/css/includes/forms/lib';
+@import '../../protocol/css/components/call-out';
+
+// xs
+$v-grid-xs: $layout-md;
+$h-grid-xs: $layout-xs;
+
+//md
+$v-grid-md: $layout-xl / 2;
+$h-grid-md: 64px;
+
+//lg
+$v-grid-lg: 192px / 2;
+$h-grid-lg: 80px;
+
+// --------------------------------------------------------------------------
+// Theme colours
+
+.t-unfck {
+    a.mzp-c-button.c-button-fb-container {
+        background-color: $color-green-30;
+        color: $color-ink-90;
+
+        &:hover {
+            background-color: $color-green-50;
+        }
+
+        &:focus {
+            box-shadow: $field-focus-ring-dark;
+        }
+    }
+
+    h1, h2 {
+        color: #fdf2db;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Banner & hero
+
+.c-banner-de-wrapper {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.c-banner-de {
+    @include at2x('/media/img/firefox/campaign/unfck/de/unfck-header.png', contain);
+    background-repeat: no-repeat;
+    height: 0;
+    margin: 0 auto;
+    max-width: 100%;
+    padding-top: 287 * 100% / 522;
+    position: relative;
+    top: 0;
+
+    .loaded &:after {
+        background: transparent url('/media/img/firefox/campaign/unfck/de/heart.gif') left bottom no-repeat;
+        background-size: contain;
+        display: block;
+        content: '';
+        width: 17.9%;
+        position: absolute;
+        bottom: 12%;
+        top: 0;
+        left: 12.8%;
+    }
+
+    @media #{$mq-md} {
+        @include at2x('/media/img/firefox/campaign/unfck/de/unfck-header-long.png', contain);
+        margin-bottom: 0;
+        padding-top: 375 * 100% / 1500;
+
+        .loaded &:after {
+            width: 10.4%;
+            bottom: 29%;
+            left: 10%;
+        }
+    }
+
+    @media #{$mq-lg} {
+        top: -$layout-sm;
+    }
+
+    @media #{$mq-xl} {
+        top: -$layout-md;
+    }
+}
+
+.mzp-c-hero {
+    h2 {
+        @include text-title-md;
+        margin-bottom: $spacing-lg;
+
+        @media #{$mq-md} {
+            margin-bottom: $spacing-xl;
+        }
+    }
+
+    .mzp-l-content {
+        padding-top: 0;
+    }
+
+    .c-button-fb-container {
+        display: none;
+    }
+
+    .is-firefox & {
+        .download-button {
+            display: none;
+        }
+
+        .c-button-fb-container {
+            display: inline-block;
+        }
+    }
+
+    @media #{$mq-lg} {
+        padding-bottom: 0;
+        margin-top: -$spacing-lg;
+    }
+
+    @media #{$mq-xl} {
+        margin-top: -$spacing-2xl;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Twitter share
+
+$svg-icon-twitter: '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M5.032 14.5c6.037 0 9.34-5.002 9.34-9.34 0-.142 0-.283-.01-.424A6.679 6.679 0 0 0 16 3.037c-.6.266-1.235.44-1.885.517a3.294 3.294 0 0 0 1.443-1.816 6.579 6.579 0 0 1-2.085.797A3.286 3.286 0 0 0 7.88 5.528 9.32 9.32 0 0 1 1.114 2.1 3.285 3.285 0 0 0 2.13 6.481 3.258 3.258 0 0 1 .64 6.07v.041A3.284 3.284 0 0 0 3.274 9.33c-.484.132-.99.151-1.483.056a3.286 3.286 0 0 0 3.067 2.28A6.587 6.587 0 0 1 0 13.025a9.294 9.294 0 0 0 5.032 1.472" fill="#88ffd1" fill-rule="nonzero"/></svg>';
+$icon_twitter: svg-url($svg-icon-twitter);
+
+$svg-icon-twitter-hover: '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M5.032 14.5c6.037 0 9.34-5.002 9.34-9.34 0-.142 0-.283-.01-.424A6.679 6.679 0 0 0 16 3.037c-.6.266-1.235.44-1.885.517a3.294 3.294 0 0 0 1.443-1.816 6.579 6.579 0 0 1-2.085.797A3.286 3.286 0 0 0 7.88 5.528 9.32 9.32 0 0 1 1.114 2.1 3.285 3.285 0 0 0 2.13 6.481 3.258 3.258 0 0 1 .64 6.07v.041A3.284 3.284 0 0 0 3.274 9.33c-.484.132-.99.151-1.483.056a3.286 3.286 0 0 0 3.067 2.28A6.587 6.587 0 0 1 0 13.025a9.294 9.294 0 0 0 5.032 1.472" fill="#000000" fill-rule="nonzero"/></svg>';
+$icon_twitter-hover: svg-url($svg-icon-twitter-hover);
+
+// text area
+
+.c-tell-input {
+    background-color: $color-yellow-05;
+    border-color: $color-green-30;
+    color: $color-ink-90;
+    width: 100%;
+
+    &:hover {
+        border-color: $color-yellow-05;
+    }
+
+    &:focus {
+        border-color: $color-yellow-05;
+        box-shadow: $field-focus-ring-dark;
+    }
+}
+
+.c-tell-button.mzp-c-button.mzp-t-secondary {
+    border-color: $color-green-30;
+    color: $color-green-30;
+    @include background-size(24px 24px);
+    background-image: $icon_twitter;
+    background-repeat: no-repeat;
+    background-position: left $spacing-lg center;
+    padding-left: $spacing-lg + 24px + $spacing-sm;
+
+    &:hover,
+    &:focus {
+        background-color: $color-green-50;
+        border-color: $color-green-50;
+        color: $color-ink-90;
+        background-image: $icon_twitter-hover;
+    }
+
+    &:focus {
+        box-shadow: $field-focus-ring-dark;
+    }
+}
+
+// --------------------------------------------------------------------------
+// Instagram section
+
+.call-out-instagram {
+    background-color: transparent;
+
+    .mzp-c-call-out-title {
+        color: $color-white;
+    }
+
+    .mzp-c-cta-link {
+        background: none;
+        padding: 0;
+    }
+
+    @media #{$mq-lg} {
+        padding-bottom: $v-grid-lg;
+    }
+}
+
+.call-out-instagram-copy li {
+    line-height: 2;
+}
+
+.c-instagram-grid-link {
+    display: block;
+}
+
+.c-instagram-grid {
+    margin-top: $spacing-2xl;
+    display: grid;
+    grid-gap: $spacing-xl;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media #{$mq-md} {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.mzp-c-card {
+    @media #{$mq-lg} {
+        margin-bottom: $v-grid-md;
+    }
+}
